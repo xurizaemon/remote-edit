@@ -76,6 +76,7 @@ module.exports =
     ####################
     # Overridden methods
     getConnectionString: (connectionOptions) ->
+      connectionOptions.agent = process.env['SSH_AUTH_SOCK']
       if @useAgent
         return _.extend(@getConnectionStringUsingAgent(), connectionOptions)
       else if @usePrivateKey
